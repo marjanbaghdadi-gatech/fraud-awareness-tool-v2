@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scam Awareness Assistant</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-shield">✓</div>
+        <span>Scam Awareness Assistant</span>
+      </div>
+      <div class="top-actions">
+        <button class="learn-btn" type="button">Learn more</button>
+        <button class="theme-btn" type="button" aria-label="Toggle theme">☾</button>
+      </div>
+    </header>
+
+    <main class="main-frame">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Scam Awareness<br><span>Assistant</span></h1>
+          <p>Use this tool to check suspicious messages. It flags potential scam risks and suggests what to do next.</p>
+        </div>
+        <div class="privacy-card" role="note">
+          <div class="privacy-card-top">
+            <div class="lock-icon">🔒</div>
+            <span class="privacy-card-label">Your information stays private.</span>
+          </div>
+          <p class="privacy-card-text">We never store or share your messages or screenshots.</p>
+        </div>
+      </section>
+
+      <div class="content-area">
+
+        <!-- INPUTS -->
+        <section class="input-grid" aria-label="Input options">
+
+          <article class="input-card">
+            <h2>Paste a text message</h2>
+            <div class="textarea-box">
+              <label for="textInput" class="sr-only">Paste suspicious message</label>
+              <textarea id="textInput" maxlength="3000"
+                placeholder="Paste the message here — include any links or phone numbers"
+                aria-describedby="charCount"></textarea>
+              <span id="charCount" aria-live="polite">0 / 3000</span>
+            </div>
+            <div class="input-footer">
+              <button id="analyzeTextBtn" class="primary-btn" type="button">Check this message</button>
+            </div>
+          </article>
+
+          <article class="input-card">
+            <h2>Upload a screenshot</h2>
+            <label id="dropZone" class="drop-zone" for="imageInput" tabindex="0" aria-label="Upload screenshot">
+              <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+              <div class="upload-icon">⇧</div>
+              <strong>Tap to choose a screenshot</strong>
+              <span>or drag and drop here</span>
+              <small>PNG, JPG or WEBP · max 10 MB</small>
+              <em id="fileName"></em>
+            </label>
+            <div class="input-footer">
+              <button id="analyzeImageBtn" class="primary-btn blue-btn" type="button">Check this image</button>
+            </div>
+          </article>
+
+        </section>
+
+        <!-- LOADING PANEL -->
+        <section id="loadingPanel" class="loading-panel hidden" aria-live="assertive">
+          <div class="loading-inner">
+            <div class="loading-spinner" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="4"
+                  stroke-linecap="round" stroke-dasharray="90 28"/>
+              </svg>
+            </div>
+            <div class="loading-text">
+              <p class="loading-headline" id="loadingHeadline">Analyzing…</p>
+              <div class="loading-steps">
+                <div class="loading-step" id="lstep1"><span class="lstep-dot"></span>Reading content</div>
+                <div class="loading-step" id="lstep2"><span class="lstep-dot"></span>Checking for scam signs</div>
+                <div class="loading-step" id="lstep3"><span class="lstep-dot"></span>Preparing your result</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="resultsPanel" class="results-frame hidden" aria-live="polite" aria-label="Analysis result">
+
+          <div class="results-title">
+            <h2>Result</h2>
+          </div>
+
+          <div class="results-grid">
+
+            <article class="result-card score-card">
+              <h3>Risk Score</h3>
+              <div class="score-content">
+                <div>
+                  <div class="score-number"><span id="riskScore">--</span><small>/100</small></div>
+                  <div id="riskBadge" class="risk-badge" role="status">—</div>
+                </div>
+                <div class="gauge-area">
+                  <svg viewBox="0 0 220 130" class="risk-gauge-svg" aria-hidden="true">
+                    <path class="gauge-low"  d="M35 110 A75 75 0 0 1 75 45" />
+                    <path class="gauge-mid"  d="M75 45 A75 75 0 0 1 145 45" />
+                    <path class="gauge-high" d="M145 45 A75 75 0 0 1 185 110" />
+                    <line id="gaugeNeedle" x1="110" y1="110" x2="170" y2="78" />
+                    <circle cx="110" cy="110" r="6" />
+                  </svg>
+                  <div class="gauge-labels"><span>Low</span><span>High</span></div>
+                </div>
+              </div>
+              <div class="summary-box">
+                <p id="summaryText"></p>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <div class="card-row-title">
+                <h3>Warning Signs</h3>
+                <span id="flagCount" aria-label="Number of warning signs">0</span>
+              </div>
+              <ul id="redFlagsList" class="flag-list"></ul>
+              <button id="viewFullBtn" class="outline-btn" type="button" aria-expanded="false">
+                Full explanation ↓
+              </button>
+            </article>
+
+            <article class="result-card">
+              <h3>What To Do</h3>
+              <ul id="nextStepsList" class="steps-list"></ul>
+            </article>
+
+          </div>
+
+          <div id="fullAnalysis" class="full-analysis hidden">
+            <h3>Full explanation</h3>
+            <p id="explanationText"></p>
+            <p id="plainExplanationText" style="margin-top:18px;"></p>
+            <p id="disclaimerText"></p>
+          </div>
+
+          <div class="bottom-callout">
+            <strong>Stay safe. Stay smart.</strong>
+            <button type="button">Learn how to stay safe ↗</button>
+          </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
