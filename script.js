@@ -166,7 +166,7 @@ function renderResults(data) {
   riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
   riskBadge.className   = `risk-badge ${cls}`;
 
-  gaugeNeedle.style.transform = `rotate(${-75 + score * 1.5}deg)`;
+  gaugeNeedle.style.transform = `rotate(${-180 + score * 1.8}deg)`;
 
   summaryText.textContent = data.summary || "Analysis complete.";
 
