@@ -433,7 +433,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 }
 
 /* score card */
-.score-card { background: var(--navy); border-right-color: rgba(255,255,255,0.12); }
+.score-card { background: var(--navy); border-right-color: rgba(255,255,255,0.12); display: flex; flex-direction: column; }
 .score-card h3 { color: rgba(255,255,255,0.45); }
 
 .score-content {
@@ -444,6 +444,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   gap: 14px;
   text-align: center;
   padding: 8px 0;
+  flex: 1;
 }
 
 .score-number {
@@ -528,7 +529,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 .full-analysis p {
   margin: 0; color: var(--body-text);
   font-size: var(--text-base); line-height: 1.85;
-  letter-spacing: 0.012em; max-width: 62ch;
+  letter-spacing: 0.012em; width: 100%;
   text-align: justify;
 }
 
