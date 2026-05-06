@@ -21,7 +21,6 @@ const resultsPanel        = document.getElementById("resultsPanel");
 const riskScore           = document.getElementById("riskScore");
 const riskBadge           = document.getElementById("riskBadge");
 const gaugeNeedle         = document.getElementById("gaugeNeedle");
-const summaryText         = document.getElementById("summaryText");
 const redFlagsList        = document.getElementById("redFlagsList");
 const nextStepsList       = document.getElementById("nextStepsList");
 const flagCount           = document.getElementById("flagCount");
@@ -200,7 +199,6 @@ function renderResults(data) {
 
   gaugeNeedle.style.transform = `rotate(${-180 + score * 1.8}deg)`;
 
-  summaryText.textContent = data.summary || "Analysis complete.";
 
   renderList(redFlagsList,  data.red_flags,               "No major red flags detected.");
   renderList(nextStepsList, data.recommended_next_steps,  "Verify through an official source.");
@@ -234,7 +232,6 @@ function showError(error) {
   riskScore.textContent    = "--";
   riskBadge.textContent    = "Error";
   riskBadge.className      = "risk-badge medium";
-  summaryText.textContent  = "Something went wrong. Please try again.";
   redFlagsList.innerHTML   = "";
   nextStepsList.innerHTML  = "";
   flagCount.textContent    = "0";
