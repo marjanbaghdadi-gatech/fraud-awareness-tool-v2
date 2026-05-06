@@ -56,14 +56,14 @@
 
           <article class="input-card">
             <h2>Upload a screenshot</h2>
-            <label id="dropZone" class="drop-zone" for="imageInput" tabindex="0" aria-label="Upload screenshot">
-              <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+            <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" style="display:none;" />
+            <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Upload screenshot">
               <div class="upload-icon">⇧</div>
               <strong>Tap to choose a screenshot</strong>
               <span>or drag and drop here</span>
               <small>PNG, JPG or WEBP · max 10 MB</small>
               <em id="fileName"></em>
-            </label>
+            </div>
 
             <div id="imagePreviewWrap" class="image-preview-wrap hidden">
               <img id="imagePreview" class="image-preview" alt="Uploaded screenshot preview" />

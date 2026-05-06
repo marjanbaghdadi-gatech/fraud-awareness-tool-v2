@@ -47,7 +47,13 @@ imageInput.addEventListener("change", () => {
   showImagePreview(selectedImageFile);
 });
 
-dropZone.addEventListener("click", () => imageInput.click());
+dropZone.addEventListener("click", () => {
+  if (!selectedImageFile) imageInput.click();
+});
+
+dropZone.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && !selectedImageFile) imageInput.click();
+});
 
 ["dragenter", "dragover"].forEach(e => {
   dropZone.addEventListener(e, ev => { ev.preventDefault(); dropZone.classList.add("drag-over"); });
