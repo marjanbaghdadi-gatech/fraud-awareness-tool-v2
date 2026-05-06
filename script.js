@@ -30,7 +30,6 @@ const explanationText     = document.getElementById("explanationText");
 const plainExplanationText = document.getElementById("plainExplanationText");
 const disclaimerText      = document.getElementById("disclaimerText");
 
-const explanationKey = "How this tool reached its conclusion about the level of risk involved";
 
 let selectedImageFile = null;
 let stepTimer = null;
@@ -208,10 +207,13 @@ function renderResults(raw) {
   flagCount.textContent = Array.isArray(data.red_flags) ? data.red_flags.length : 0;
 
   explanationText.textContent =
-    data[explanationKey] || "The tool checked message patterns and common scam warning signs.";
+    data.plain_language_explanation || "The tool checked this message for common scam patterns and warning signs.";
 
+  const scamType = data.scam_type && data.scam_type !== "none_detected"
+    ? "Detected pattern: " + data.scam_type.replace(/_/g, " ") + ". "
+    : "";
   plainExplanationText.textContent =
-    data.plain_language_explanation || "Use this result to help decide what to do next.";
+    scamType + (data.summary || "Use this result to help decide what to do next.");
 
   disclaimerText.textContent =
     data.disclaimer || "This is an educational assessment. When in doubt, verify through an official source.";
