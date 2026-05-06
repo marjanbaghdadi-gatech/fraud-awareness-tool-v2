@@ -12,7 +12,7 @@
     <header class="topbar">
       <div class="brand">
         <div class="brand-shield">✓</div>
-        <span>Scam Awareness Assistant</span>
+        <span>Fraud Awareness Assistant</span>
       </div>
       <div class="top-actions">
         <button class="learn-btn" type="button">Learn more</button>
@@ -25,15 +25,13 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero-copy">
-          <h1>Scam Awareness<br><span>Assistant</span></h1>
+          <h1>Fraud Awareness<br><span>Assistant</span></h1>
           <p>Use this tool to check suspicious messages. It flags potential scam risks and suggests what to do next.</p>
         </div>
         <div class="privacy-card" role="note">
-          <div class="privacy-card-top">
-            <div class="lock-icon">🔒</div>
-            <span class="privacy-card-label">Your information stays private.</span>
-          </div>
-          <p class="privacy-card-text">We never store or share your messages or screenshots.</p>
+          <div class="lock-icon">🔒</div>
+          <span class="privacy-card-label">Private &amp; secure.</span>
+          <p class="privacy-card-text">We do not store or share the information you use to test this tool.</p>
         </div>
       </section>
 
@@ -66,6 +64,11 @@
               <small>PNG, JPG or WEBP · max 10 MB</small>
               <em id="fileName"></em>
             </label>
+
+            <div id="imagePreviewWrap" class="image-preview-wrap hidden">
+              <img id="imagePreview" class="image-preview" alt="Uploaded screenshot preview" />
+              <button id="clearImageBtn" class="clear-image-btn" type="button" aria-label="Remove image">✕ Remove</button>
+            </div>
             <div class="input-footer">
               <button id="analyzeImageBtn" class="primary-btn blue-btn" type="button">Check this image</button>
             </div>
@@ -114,7 +117,7 @@
                     <path class="gauge-low"  d="M35 110 A75 75 0 0 1 75 45" />
                     <path class="gauge-mid"  d="M75 45 A75 75 0 0 1 145 45" />
                     <path class="gauge-high" d="M145 45 A75 75 0 0 1 185 110" />
-                    <line id="gaugeNeedle" x1="110" y1="110" x2="35" y2="110" />
+                    <line id="gaugeNeedle" x1="110" y1="110" x2="185" y2="110" />
                     <circle cx="110" cy="110" r="6" />
                   </svg>
                   <div class="gauge-labels"><span>Low</span><span>High</span></div>
@@ -151,13 +154,23 @@
           </div>
 
           <div class="bottom-callout">
-            <strong>Stay safe. Stay smart.</strong>
-            <button type="button">Learn how to stay safe ↗</button>
+            <p class="attribution">This tool was developed by the Center for Advanced Communications Policy at Georgia Tech as part of ongoing research on AI, accessibility, and fraud awareness.</p>
           </div>
 
         </section>
       </div>
     </main>
+  </div>
+
+  <div class="feedback-bar">
+    <a
+      href="https://gatech.co1.qualtrics.com/jfe/form/SV_3FdmCuXm7RvEpP8"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="feedback-btn"
+    >
+      💬 Let us know what you think about this tool
+    </a>
   </div>
 
   <script src="./script.js"></script>

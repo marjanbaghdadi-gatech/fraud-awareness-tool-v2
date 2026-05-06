@@ -5,6 +5,9 @@ const charCount       = document.getElementById("charCount");
 const imageInput      = document.getElementById("imageInput");
 const dropZone        = document.getElementById("dropZone");
 const fileName        = document.getElementById("fileName");
+const imagePreviewWrap = document.getElementById("imagePreviewWrap");
+const imagePreview     = document.getElementById("imagePreview");
+const clearImageBtn    = document.getElementById("clearImageBtn");
 const analyzeTextBtn  = document.getElementById("analyzeTextBtn");
 const analyzeImageBtn = document.getElementById("analyzeImageBtn");
 
@@ -41,7 +44,7 @@ textInput.addEventListener("input", () => {
 // ── Image selection ──────────────────────────────────
 imageInput.addEventListener("change", () => {
   selectedImageFile = imageInput.files[0] || null;
-  fileName.textContent = selectedImageFile ? selectedImageFile.name : "";
+  showImagePreview(selectedImageFile);
 });
 
 dropZone.addEventListener("click", () => imageInput.click());
@@ -61,18 +64,41 @@ dropZone.addEventListener("drop", event => {
     selectedImageFile = null;
     return;
   }
-  fileName.textContent = selectedImageFile.name;
+  showImagePreview(selectedImageFile);
 });
 
 window.addEventListener("paste", event => {
   for (const item of event.clipboardData?.items || []) {
     if (item.type.startsWith("image/")) {
       selectedImageFile = item.getAsFile();
-      fileName.textContent = selectedImageFile.name || "Pasted image";
+      showImagePreview(selectedImageFile);
       break;
     }
   }
 });
+
+// ── Image preview ─────────────────────────────────────
+function showImagePreview(file) {
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  imagePreview.src = url;
+  imagePreview.onload = () => URL.revokeObjectURL(url);
+  fileName.textContent = file.name || "Pasted image";
+  imagePreviewWrap.classList.remove("hidden");
+  dropZone.style.display = "none";
+}
+
+function clearImage() {
+  selectedImageFile = null;
+  imagePreview.src = "";
+  fileName.textContent = "";
+  imagePreviewWrap.classList.add("hidden");
+  dropZone.style.display = "";
+  imageInput.value = "";
+}
+
+// ── Clear image ───────────────────────────────────────
+clearImageBtn.addEventListener("click", clearImage);
 
 // ── Analyze text ──────────────────────────────────────
 analyzeTextBtn.addEventListener("click", async () => {
