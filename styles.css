@@ -436,7 +436,15 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 .score-card { background: var(--navy); border-right-color: rgba(255,255,255,0.12); }
 .score-card h3 { color: rgba(255,255,255,0.45); }
 
-.score-content { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center; }
+.score-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 8px 0;
+}
 
 .score-number {
   font-family: 'Lora', serif; font-size: 88px;
@@ -449,14 +457,14 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 
 .risk-badge {
   display: inline-flex; align-items: center; gap: 7px;
-  margin-top: 14px; padding: 10px 18px; border-radius: 999px;
+  margin-top: 0; padding: 10px 18px; border-radius: 999px;
   font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.02em;
 }
 .risk-badge.high   { background: rgba(155,28,28,0.20); color: #fca5a5; border: 1.5px solid rgba(155,28,28,0.32); }
 .risk-badge.medium { background: rgba(180,115,9,0.20);  color: #fcd34d; border: 1.5px solid rgba(180,115,9,0.32); }
 .risk-badge.low    { background: rgba(26,92,66,0.22);   color: #6ee7b7; border: 1.5px solid rgba(26,92,66,0.32); }
 
-.gauge-area { min-width: 0; }
+.gauge-area { min-width: 0; width: 100%; }
 .risk-gauge-svg { width: 100%; max-width: 170px; display: block; margin: 0 auto 6px; }
 .risk-gauge-svg path { fill: none; stroke-width: 18; stroke-linecap: butt; opacity: 0.8; }
 .gauge-low { stroke: #34d399; } .gauge-mid { stroke: #fbbf24; } .gauge-high { stroke: #f87171; }
@@ -470,15 +478,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 .gauge-labels span:first-child { color: #34d399; }
 .gauge-labels span:last-child  { color: #f87171; }
 
-.summary-box {
-  margin-top: 20px; padding: 16px;
-  border-radius: var(--r-sm);
-  background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.12);
-}
-.summary-box p {
-  margin: 0; color: rgba(255,255,255,0.82);
-  font-size: var(--text-sm); line-height: 1.65;
-}
+
 
 /* flags + steps */
 .card-row-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
@@ -529,6 +529,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   margin: 0; color: var(--body-text);
   font-size: var(--text-base); line-height: 1.85;
   letter-spacing: 0.012em; max-width: 62ch;
+  text-align: justify;
 }
 
 #disclaimerText {
@@ -604,7 +605,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
     border-right: none;
     border-bottom: 1.5px solid rgba(255,255,255,0.12);
   }
-  .score-content { grid-template-columns: auto 1fr; gap: 24px; }
+  .score-content { flex-direction: column; align-items: center; gap: 14px; }
   .result-card { border-right: none; border-bottom: 1.5px solid var(--border); }
   .result-card:last-child { border-bottom: none; }
 
@@ -661,7 +662,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   /* results single column on phone */
   .results-grid { grid-template-columns: 1fr; }
   .score-card { grid-column: auto; border-bottom: 1.5px solid rgba(255,255,255,0.12); }
-  .score-content { grid-template-columns: auto 1fr; gap: 16px; }
+  .score-content { flex-direction: column; align-items: center; gap: 12px; }
   .score-number { font-size: 64px; }
   .result-card { border-right: none; border-bottom: 1.5px solid var(--border); }
   .result-card:last-child { border-bottom: none; }
@@ -717,8 +718,9 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   border: 2px solid #a8d8bc;
   color: var(--teal);
   font-family: 'Source Sans 3', sans-serif;
-  font-size: var(--text-md);
+  font-size: var(--text-xl);
   font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 18px rgba(26,107,90,0.14);
