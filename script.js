@@ -188,7 +188,9 @@ function hideLoading() {
 }
 
 // ── Render results ────────────────────────────────────
-function renderResults(data) {
+function renderResults(raw) {
+  // n8n returns an array — unwrap it
+  const data = Array.isArray(raw) ? raw[0] : raw;
   const score     = Math.max(0, Math.min(Number(data.risk_score ?? 0), 100));
   const level     = normalizeRiskLevel(data.risk_level, score);
   const cls       = riskClass(level);
