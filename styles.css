@@ -784,3 +784,35 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   background: var(--danger-bg);
   border-color: var(--danger-border);
 }
+
+/* ── FULL EXPLANATION BAR ───────────────────────────── */
+.full-explanation-bar {
+  padding: 20px 28px;
+  border-top: 1.5px solid var(--border);
+  background: var(--warm-bg);
+  display: flex;
+  justify-content: center;
+}
+
+.full-explanation-btn {
+  width: 100%;
+  height: 56px;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--navy);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.full-explanation-btn:hover {
+  border-color: var(--navy);
+  background: var(--warm-mist);
+}
