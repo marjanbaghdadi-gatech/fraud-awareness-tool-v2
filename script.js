@@ -18,7 +18,7 @@ const lstep2          = document.getElementById("lstep2");
 const lstep3          = document.getElementById("lstep3");
 
 const resultsPanel        = document.getElementById("resultsPanel");
-const riskScore           = document.getElementById("riskScore");
+const riskLabel           = document.getElementById("riskLabel");
 const riskBadge           = document.getElementById("riskBadge");
 const gaugeNeedle         = document.getElementById("gaugeNeedle");
 const redFlagsList        = document.getElementById("redFlagsList");
@@ -194,11 +194,18 @@ function renderResults(raw) {
   const level     = normalizeRiskLevel(data.risk_level, score);
   const cls       = riskClass(level);
 
-  riskScore.textContent = score;
+  // Score used silently for gauge needle only — not shown to user
+  gaugeNeedle.style.transform = `rotate(${-180 + score * 1.8}deg)`;
+
+  // Human-readable label
+  const labelText = level === "likely risky"    ? "High Risk"
+                  : level === "unclear"          ? "Unclear"
+                  : "Likely Harmless";
+  riskLabel.textContent = labelText;
+  riskLabel.className   = `risk-label ${cls}`;
+
   riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
   riskBadge.className   = `risk-badge ${cls}`;
-
-  gaugeNeedle.style.transform = `rotate(${-180 + score * 1.8}deg)`;
 
 
   renderList(redFlagsList,  data.red_flags,               "No major red flags detected.");
@@ -233,7 +240,8 @@ function renderList(container, items, fallback) {
 
 // ── Error state ───────────────────────────────────────
 function showError(error) {
-  riskScore.textContent    = "--";
+  riskLabel.textContent    = "—";
+  riskLabel.className     = "risk-label";
   riskBadge.textContent    = "Error";
   riskBadge.className      = "risk-badge medium";
   redFlagsList.innerHTML   = "";

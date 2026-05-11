@@ -447,13 +447,35 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   flex: 1;
 }
 
-.score-number {
-  font-family: 'Lora', serif; font-size: 88px;
-  line-height: 1; color: white; letter-spacing: -0.04em;
+.risk-label {
+  font-family: 'Lora', serif;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: -0.01em;
+  padding: 16px 24px;
+  border-radius: var(--r-md);
+  transition: color 0.5s, background 0.5s, border-color 0.5s;
+  /* default neutral state */
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.10);
 }
-.score-number small {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 24px; color: rgba(255,255,255,0.35); letter-spacing: 0;
+.risk-label.low {
+  color: #6ee7b7;
+  background: rgba(26,92,66,0.22);
+  border-color: rgba(52,211,153,0.35);
+}
+.risk-label.medium {
+  color: #fcd34d;
+  background: rgba(180,115,9,0.20);
+  border-color: rgba(251,191,36,0.35);
+}
+.risk-label.high {
+  color: #fca5a5;
+  background: rgba(155,28,28,0.22);
+  border-color: rgba(248,113,113,0.35);
 }
 
 .risk-badge {
