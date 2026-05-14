@@ -832,6 +832,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   border-color: var(--danger-border);
 }
 
+
 /* ── FULL EXPLANATION BAR ───────────────────────────── */
 .full-explanation-bar {
   padding: 20px 28px;
@@ -844,15 +845,15 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 .full-explanation-btn {
   width: 100%;
   height: 56px;
-  border: 2px solid var(--border-strong);
+  border: 2px solid #e8c84a;
   border-radius: var(--r-sm);
-  background: transparent;
-  color: var(--navy);
+  background: #fdf3d0;
+  color: #7a5a00;
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--text-sm);
   font-weight: 700;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -860,8 +861,9 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 }
 
 .full-explanation-btn:hover {
-  border-color: var(--navy);
-  background: var(--warm-mist);
+  border-color: #c8a000;
+  background: #fae89a;
+  box-shadow: 0 4px 14px rgba(212,160,10,0.22);
 }
 
 /* ── REASSURANCE NOTE ───────────────────────────────── */
