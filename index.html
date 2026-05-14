@@ -106,7 +106,6 @@
           <div class="results-grid">
 
             <article class="result-card score-card">
-              <h3>Risk Level</h3>
               <div class="score-content">
                 <div id="riskLabel" class="risk-label" role="status">—</div>
                 <div class="gauge-area">
@@ -119,11 +118,10 @@
                   </svg>
                   <div class="gauge-labels"><span>Low</span><span>High</span></div>
                 </div>
-                <div id="riskBadge" class="risk-badge" role="status">—</div>
               </div>
             </article>
 
-            <article class="result-card">
+            <article class="result-card warning-card">
               <div class="card-row-title">
                 <h3>Warning Signs</h3>
                 <span id="flagCount" aria-label="Number of warning signs">0</span>
@@ -131,9 +129,10 @@
               <ul id="redFlagsList" class="flag-list"></ul>
             </article>
 
-            <article class="result-card">
+            <article class="result-card what-to-do-card">
               <h3>What To Do</h3>
               <ul id="nextStepsList" class="steps-list"></ul>
+              <p id="reassuranceNote" class="reassurance-note hidden">You are already taking the right step by checking this message.</p>
             </article>
 
           </div>

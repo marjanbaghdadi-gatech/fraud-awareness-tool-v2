@@ -19,10 +19,10 @@ const lstep3          = document.getElementById("lstep3");
 
 const resultsPanel        = document.getElementById("resultsPanel");
 const riskLabel           = document.getElementById("riskLabel");
-const riskBadge           = document.getElementById("riskBadge");
 const gaugeNeedle         = document.getElementById("gaugeNeedle");
 const redFlagsList        = document.getElementById("redFlagsList");
 const nextStepsList       = document.getElementById("nextStepsList");
+const reassuranceNote     = document.getElementById("reassuranceNote");
 const flagCount           = document.getElementById("flagCount");
 const viewFullBtn         = document.getElementById("viewFullBtn");
 const fullAnalysis        = document.getElementById("fullAnalysis");
@@ -204,8 +204,6 @@ function renderResults(raw) {
   riskLabel.textContent = labelText;
   riskLabel.className   = `risk-label ${cls}`;
 
-  riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
-  riskBadge.className   = `risk-badge ${cls}`;
 
 
   // Combine red flags with behavioral tactics for richer warning signs
@@ -241,6 +239,13 @@ function renderResults(raw) {
 
   renderList(redFlagsList, allWarnings, "No major red flags detected.");
   renderList(nextStepsList, data.recommended_next_steps, "Verify through an official source.");
+  // Show reassurance note when steps are sparse (2 or fewer)
+  const stepCount = Array.isArray(data.recommended_next_steps) ? data.recommended_next_steps.length : 0;
+  if (stepCount <= 2) {
+    reassuranceNote.classList.remove("hidden");
+  } else {
+    reassuranceNote.classList.add("hidden");
+  }
 
   // Flag count includes both keyword and behavioral warnings
   flagCount.textContent = allWarnings.length;
@@ -280,10 +285,9 @@ function renderList(container, items, fallback) {
 function showError(error) {
   riskLabel.textContent    = "—";
   riskLabel.className     = "risk-label";
-  riskBadge.textContent    = "Error";
-  riskBadge.className      = "risk-badge medium";
   redFlagsList.innerHTML   = "";
   nextStepsList.innerHTML  = "";
+  reassuranceNote.classList.add("hidden");
   flagCount.textContent    = "0";
   explanationText.textContent     = error.message;
   plainExplanationText.textContent = "";
