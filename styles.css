@@ -601,7 +601,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   font-weight: 400;
   color: rgba(255,255,255,0.72);
   line-height: 1.6;
-  max-width: 62ch;
+  /* max-width: 62ch; */
   text-align: center;
 }
 
@@ -848,7 +848,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   border: 2px solid #e8c84a;
   border-radius: var(--r-sm);
   background: #fdf3d0;
-  color: #7a5a00;
+  color: rgb(0 0 0);
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--text-sm);
   font-weight: 700;
