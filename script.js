@@ -208,10 +208,42 @@ function renderResults(raw) {
   riskBadge.className   = `risk-badge ${cls}`;
 
 
-  renderList(redFlagsList,  data.red_flags,               "No major red flags detected.");
-  renderList(nextStepsList, data.recommended_next_steps,  "Verify through an official source.");
+  // Combine red flags with behavioral tactics for richer warning signs
+  const redFlags = Array.isArray(data.red_flags) ? data.red_flags : [];
+  const activeTactics = Array.isArray(data.active_tactics) ? data.active_tactics : [];
 
-  flagCount.textContent = Array.isArray(data.red_flags) ? data.red_flags.length : 0;
+  // Convert behavioral tactic keys to plain readable labels
+  const tacticLabels = {
+    urgency_creation:        "Creates artificial urgency or time pressure",
+    fear_induction:          "Uses threats or fear to pressure you",
+    authority_exploitation:  "Impersonates a trusted authority figure",
+    isolation_tactic:        "Asks you to keep this secret from others",
+    trust_building:          "Uses excessive warmth or flattery before a request",
+    too_good_to_be_true:     "Makes an offer that seems unrealistically good",
+    reciprocity_manipulation:"Creates a sense of obligation or debt",
+    scarcity_pressure:       "Claims this is a limited or exclusive opportunity",
+    emotional_exploitation:  "Plays on your emotions — love, fear, guilt, or sympathy",
+    action_bypass:           "Pressures you to act before you can think or verify",
+  };
+
+  // Only show behavioral tactics not already covered by red flags
+  const behavioralWarnings = activeTactics
+    .filter(t => tacticLabels[t])
+    .map(t => tacticLabels[t])
+    .filter(label => !redFlags.some(f => f.toLowerCase().includes(label.toLowerCase().slice(0, 20))));
+
+  const allWarnings = [...redFlags, ...behavioralWarnings];
+
+  // Show behavioral summary as an extra warning if novel scam detected and no other warnings
+  if (allWarnings.length === 0 && data.behavioral_summary && data.behavioral_risk_score > 40) {
+    allWarnings.push(data.behavioral_summary);
+  }
+
+  renderList(redFlagsList, allWarnings, "No major red flags detected.");
+  renderList(nextStepsList, data.recommended_next_steps, "Verify through an official source.");
+
+  // Flag count includes both keyword and behavioral warnings
+  flagCount.textContent = allWarnings.length;
 
   explanationText.textContent =
     data.plain_language_explanation || "The tool checked this message for common scam patterns and warning signs.";
@@ -219,8 +251,14 @@ function renderResults(raw) {
   const scamType = data.scam_type && data.scam_type !== "none_detected"
     ? "Detected pattern: " + data.scam_type.replace(/_/g, " ") + ". "
     : "";
+
+  // Add behavioral summary if present and novel scam detected
+  const behavioralNote = data.behavioral_summary && data.behavioral_risk_score > 40
+    ? " Behavioral analysis: " + data.behavioral_summary
+    : "";
+
   plainExplanationText.textContent =
-    scamType + (data.summary || "Use this result to help decide what to do next.");
+    scamType + (data.summary || "Use this result to help decide what to do next.") + behavioralNote;
 
   disclaimerText.textContent =
     data.disclaimer || "This is an educational assessment. When in doubt, verify through an official source.";
