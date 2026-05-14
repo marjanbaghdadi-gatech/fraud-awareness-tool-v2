@@ -23,7 +23,6 @@ const gaugeNeedle         = document.getElementById("gaugeNeedle");
 const redFlagsList        = document.getElementById("redFlagsList");
 const nextStepsList       = document.getElementById("nextStepsList");
 const reassuranceNote     = document.getElementById("reassuranceNote");
-const flagCount           = document.getElementById("flagCount");
 const viewFullBtn         = document.getElementById("viewFullBtn");
 const fullAnalysis        = document.getElementById("fullAnalysis");
 const explanationText     = document.getElementById("explanationText");
@@ -248,7 +247,6 @@ function renderResults(raw) {
   }
 
   // Flag count includes both keyword and behavioral warnings
-  flagCount.textContent = allWarnings.length;
 
   explanationText.textContent =
     data.plain_language_explanation || "The tool checked this message for common scam patterns and warning signs.";
@@ -288,7 +286,6 @@ function showError(error) {
   redFlagsList.innerHTML   = "";
   nextStepsList.innerHTML  = "";
   reassuranceNote.classList.add("hidden");
-  flagCount.textContent    = "0";
   explanationText.textContent     = error.message;
   plainExplanationText.textContent = "";
   disclaimerText.textContent       = "";
