@@ -19,10 +19,11 @@ const lstep3          = document.getElementById("lstep3");
 
 const resultsPanel        = document.getElementById("resultsPanel");
 const riskLabel           = document.getElementById("riskLabel");
+const riskBadge           = document.getElementById("riskBadge");
 const gaugeNeedle         = document.getElementById("gaugeNeedle");
 const redFlagsList        = document.getElementById("redFlagsList");
 const nextStepsList       = document.getElementById("nextStepsList");
-const reassuranceNote     = document.getElementById("reassuranceNote");
+const flagCount           = document.getElementById("flagCount");
 const viewFullBtn         = document.getElementById("viewFullBtn");
 const fullAnalysis        = document.getElementById("fullAnalysis");
 const explanationText     = document.getElementById("explanationText");
@@ -203,6 +204,8 @@ function renderResults(raw) {
   riskLabel.textContent = labelText;
   riskLabel.className   = `risk-label ${cls}`;
 
+  riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
+  riskBadge.className   = `risk-badge ${cls}`;
 
 
   // Combine red flags with behavioral tactics for richer warning signs
@@ -236,63 +239,11 @@ function renderResults(raw) {
     allWarnings.push(data.behavioral_summary);
   }
 
-
-const redFlags = Array.isArray(data.red_flags) ? data.red_flags : [];
-const activeTactics = Array.isArray(data.active_tactics) ? data.active_tactics : [];
-
-// Add phone reputation warning if detected
-const phoneWarnings = [];
-if (data.phone_risk_signal === "confirmed_scam_number") {
-  phoneWarnings.push("This phone number has been reported as a scam number by many people");
-} else if (data.phone_risk_signal === "high_risk_number") {
-  phoneWarnings.push("This phone number has been flagged as suspicious or spam");
-} else if (data.phone_risk_signal === "reported_spam_number") {
-  phoneWarnings.push("This phone number has been reported as spam");
-}
-
-// Convert behavioral tactic keys to plain readable labels
-const tacticLabels = {
-  urgency_creation:        "Creates artificial urgency or time pressure",
-  fear_induction:          "Uses threats or fear to pressure you",
-  authority_exploitation:  "Impersonates a trusted authority figure",
-  isolation_tactic:        "Asks you to keep this secret from others",
-  trust_building:          "Uses excessive warmth or flattery before a request",
-  too_good_to_be_true:     "Makes an offer that seems unrealistically good",
-  reciprocity_manipulation:"Creates a sense of obligation or debt",
-  scarcity_pressure:       "Claims this is a limited or exclusive opportunity",
-  emotional_exploitation:  "Plays on your emotions — love, fear, guilt, or sympathy",
-  action_bypass:           "Pressures you to act before you can think or verify",
-};
-
-const behavioralWarnings = activeTactics
-  .filter(t => tacticLabels[t])
-  .map(t => tacticLabels[t])
-  .filter(label => !redFlags.some(f => f.toLowerCase().includes(label.toLowerCase().slice(0, 20))));
-
-const allWarnings = [...redFlags, ...behavioralWarnings, ...phoneWarnings];
-
-// Show behavioral summary as an extra warning if novel scam detected and no other warnings
-if (allWarnings.length === 0 && data.behavioral_summary && data.behavioral_risk_score > 40) {
-  allWarnings.push(data.behavioral_summary);
-}
-
-
-
-
-
-
-  
   renderList(redFlagsList, allWarnings, "No major red flags detected.");
   renderList(nextStepsList, data.recommended_next_steps, "Verify through an official source.");
-  // Show reassurance note when steps are sparse (2 or fewer)
-  const stepCount = Array.isArray(data.recommended_next_steps) ? data.recommended_next_steps.length : 0;
-  if (stepCount <= 2) {
-    reassuranceNote.classList.remove("hidden");
-  } else {
-    reassuranceNote.classList.add("hidden");
-  }
 
   // Flag count includes both keyword and behavioral warnings
+  flagCount.textContent = allWarnings.length;
 
   explanationText.textContent =
     data.plain_language_explanation || "The tool checked this message for common scam patterns and warning signs.";
@@ -329,9 +280,11 @@ function renderList(container, items, fallback) {
 function showError(error) {
   riskLabel.textContent    = "—";
   riskLabel.className     = "risk-label";
+  riskBadge.textContent    = "Error";
+  riskBadge.className      = "risk-badge medium";
   redFlagsList.innerHTML   = "";
   nextStepsList.innerHTML  = "";
-  reassuranceNote.classList.add("hidden");
+  flagCount.textContent    = "0";
   explanationText.textContent     = error.message;
   plainExplanationText.textContent = "";
   disclaimerText.textContent       = "";
