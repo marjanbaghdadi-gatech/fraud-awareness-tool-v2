@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Medicare Scam Calls Threaten to Cancel Benefits",
+    "category": "phone_scam",
+    "date_reported": "June 2024",
+    "source": "AARP",
+    "how_it_works": "Scammers call pretending to be from Medicare, saying your benefits will be canceled unless you give them personal information or pay a fee. They may use urgent language to scare you.",
+    "example_message": "\"This is Medicare. Your benefits will be canceled unless you confirm your Social Security number right now.\"",
+    "red_flags": [
+      "Caller asks for your Social Security or Medicare number",
+      "Threatens to cancel your benefits",
+      "Pressure to act immediately"
+    ],
+    "what_to_do": "Hang up and call Medicare directly at 1-800-MEDICARE if you have questions.",
+    "id": "scam_1778874910885_0",
+    "updated_at": "2026-05-15T19:55:10.885Z"
+  },
+  {
+    "title": "Fake Package Delivery Texts with Dangerous Links",
+    "category": "text_scam",
+    "date_reported": "June 2024",
+    "source": "BBB",
+    "how_it_works": "You get a text message saying you have a package waiting, with a link to track it. The link leads to a fake website that steals your information or puts a virus on your phone.",
+    "example_message": "\"Your package is waiting for delivery. Please confirm your details here: [fake link]\"",
+    "red_flags": [
+      "Unexpected text about a package",
+      "Link to a website you don't recognize",
+      "Requests for personal or payment information"
+    ],
+    "what_to_do": "Do not click the link—delete the message and contact the delivery company using their official website if you’re expecting a package.",
+    "id": "scam_1778874910885_1",
+    "updated_at": "2026-05-15T19:55:10.885Z"
+  },
+  {
+    "title": "Social Security Email Phishing Scam",
+    "category": "email_scam",
+    "date_reported": "June 2024",
+    "source": "FTC",
+    "how_it_works": "Scammers send emails that look like they’re from the Social Security Administration, asking you to click a link to fix a problem with your account. The link goes to a fake website that steals your information.",
+    "example_message": "\"We noticed suspicious activity on your Social Security account. Click here to review your information.\"",
+    "red_flags": [
+      "Email asks you to click a link or download an attachment",
+      "Spelling or grammar mistakes",
+      "Threatens to suspend your benefits"
+    ],
+    "what_to_do": "Do not click any links—go to the official Social Security website or call them directly if you’re concerned.",
+    "id": "scam_1778874910885_2",
+    "updated_at": "2026-05-15T19:55:10.885Z"
+  },
+  {
+    "title": "Facebook 'Friend in Need' Money Request",
+    "category": "social_media",
+    "date_reported": "June 2024",
+    "source": "news outlet name",
+    "how_it_works": "A scammer hacks your friend's Facebook account and sends you a message saying they need money for an emergency. They ask you to send money quickly, often using gift cards or wire transfers.",
+    "example_message": "\"Hi, I’m in trouble and need your help. Can you send me $200 in gift cards right away?\"",
+    "red_flags": [
+      "Urgent request for money from a friend",
+      "Asked to send gift cards or wire money",
+      "Message seems out of character for your friend"
+    ],
+    "what_to_do": "Call your friend directly using their real phone number to check if the request is real.",
+    "id": "scam_1778874910885_3",
+    "updated_at": "2026-05-15T19:55:10.885Z"
+  },
+  {
+    "title": "Tech Support Pop-Up Scam",
+    "category": "tech_support",
+    "date_reported": "June 2024",
+    "source": "AARP",
+    "how_it_works": "A pop-up appears on your computer saying you have a virus and must call a phone number for help. If you call, the scammer may ask for money or remote access to your computer.",
+    "example_message": "\"Warning! Your computer is infected. Call Microsoft support now at 1-800-XXX-XXXX.\"",
+    "red_flags": [
+      "Pop-up uses scary warnings about viruses",
+      "Tells you to call a phone number right away",
+      "Asks for payment or remote access to your computer"
+    ],
+    "what_to_do": "Close the pop-up and do not call the number—run a trusted antivirus scan or ask a family member for help.",
+    "id": "scam_1778874910885_4",
+    "updated_at": "2026-05-15T19:55:10.885Z"
+  }
+]
