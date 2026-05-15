@@ -19,11 +19,11 @@ const lstep3          = document.getElementById("lstep3");
  
 const resultsPanel        = document.getElementById("resultsPanel");
 const riskLabel           = document.getElementById("riskLabel");
-const riskBadge           = document.getElementById("riskBadge");
+const riskBadge = document.getElementById("riskBadge");
 const gaugeNeedle         = document.getElementById("gaugeNeedle");
 const redFlagsList        = document.getElementById("redFlagsList");
 const nextStepsList       = document.getElementById("nextStepsList");
-const flagCount           = document.getElementById("flagCount");
+const flagCount = document.getElementById("flagCount");
 const viewFullBtn         = document.getElementById("viewFullBtn");
 const fullAnalysis        = document.getElementById("fullAnalysis");
 const explanationText     = document.getElementById("explanationText");
@@ -38,15 +38,6 @@ let stepTimer = null;
 textInput.addEventListener("input", () => {
   charCount.textContent = `${textInput.value.length} / 3000`;
 });
-
-// ── Pre-fill from URL parameter (from scams page "Test this scam" button) ──
-const urlParams = new URLSearchParams(window.location.search);
-const prefilledMessage = urlParams.get("message");
-if (prefilledMessage) {
-  textInput.value = prefilledMessage;
-  charCount.textContent = `${prefilledMessage.length} / 3000`;
-  textInput.scrollIntoView({ behavior: "smooth", block: "center" });
-}
  
 // ── Image selection ──────────────────────────────────
 imageInput.addEventListener("change", () => {
@@ -213,8 +204,8 @@ function renderResults(raw) {
   riskLabel.textContent = labelText;
   riskLabel.className   = `risk-label ${cls}`;
  
-  riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
-  riskBadge.className   = `risk-badge ${cls}`;
+  if(riskBadge) riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
+  if(riskBadge) riskBadge.className   = `risk-badge ${cls}`;
  
  
   // Combine red flags with behavioral tactics for richer warning signs
@@ -262,7 +253,7 @@ function renderResults(raw) {
   renderList(nextStepsList, data.recommended_next_steps, "Verify through an official source.");
  
   // Flag count includes both keyword and behavioral warnings
-  flagCount.textContent = allWarnings.length;
+  if(flagCount) flagCount.textContent = allWarnings.length;
  
   explanationText.textContent =
     data.plain_language_explanation || "The tool checked this message for common scam patterns and warning signs.";
@@ -299,11 +290,11 @@ function renderList(container, items, fallback) {
 function showError(error) {
   riskLabel.textContent    = "—";
   riskLabel.className     = "risk-label";
-  riskBadge.textContent    = "Error";
-  riskBadge.className      = "risk-badge medium";
+  if(riskBadge) riskBadge.textContent    = "Error";
+  if(riskBadge) riskBadge.className      = "risk-badge medium";
   redFlagsList.innerHTML   = "";
   nextStepsList.innerHTML  = "";
-  flagCount.textContent    = "0";
+  if(flagCount) flagCount.textContent    = "0";
   explanationText.textContent     = error.message;
   plainExplanationText.textContent = "";
   disclaimerText.textContent       = "";
