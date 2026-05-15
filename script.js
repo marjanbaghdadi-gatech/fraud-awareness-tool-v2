@@ -38,6 +38,15 @@ let stepTimer = null;
 textInput.addEventListener("input", () => {
   charCount.textContent = `${textInput.value.length} / 3000`;
 });
+
+// ── Pre-fill from URL parameter (from scams page "Test this scam" button) ──
+const urlParams = new URLSearchParams(window.location.search);
+const prefilledMessage = urlParams.get("message");
+if (prefilledMessage) {
+  textInput.value = prefilledMessage;
+  charCount.textContent = `${prefilledMessage.length} / 3000`;
+  textInput.scrollIntoView({ behavior: "smooth", block: "center" });
+}
  
 // ── Image selection ──────────────────────────────────
 imageInput.addEventListener("change", () => {
