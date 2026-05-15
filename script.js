@@ -241,7 +241,17 @@ function renderResults(raw) {
     .map(t => tacticLabels[t])
     .filter(label => !redFlags.some(f => f.toLowerCase().includes(label.toLowerCase().slice(0, 20))));
  
-  const allWarnings = [...redFlags, ...behavioralWarnings];
+  // Phone reputation warnings
+  const phoneWarnings = [];
+  if (data.phone_risk_signal === "confirmed_scam_number") {
+    phoneWarnings.push("This phone number has been reported as a scam number by many people");
+  } else if (data.phone_risk_signal === "high_risk_number") {
+    phoneWarnings.push("This phone number has been flagged as suspicious or spam");
+  } else if (data.phone_risk_signal === "reported_spam_number") {
+    phoneWarnings.push("This phone number has been reported as spam");
+  }
+
+  const allWarnings = [...redFlags, ...behavioralWarnings, ...phoneWarnings];
  
   // Show behavioral summary as an extra warning if novel scam detected and no other warnings
   if (allWarnings.length === 0 && data.behavioral_summary && data.behavioral_risk_score > 40) {
