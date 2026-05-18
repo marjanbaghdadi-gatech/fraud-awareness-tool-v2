@@ -699,12 +699,15 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   .app { padding: 10px 12px 36px; }
   .main-frame { border-radius: var(--r-lg); }
 
-  /* hero stacks vertically on phone */
+  /* hero fills the screen on phone — one card at a time */
   .hero {
     flex-direction: column;
     align-items: flex-start;
-    padding: 28px 22px 24px;
-    gap: 16px;
+    padding: 36px 22px 32px;
+    gap: 20px;
+    min-height: 100svh;
+    min-height: 100vh; /* fallback */
+    justify-content: center;
   }
   .privacy-card { max-width: 100%; width: 100%; }
 
@@ -722,12 +725,26 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 
   .content-area { padding: 22px 16px 32px; }
 
-  /* single column inputs on phone */
-  .input-grid { grid-template-columns: 1fr; gap: 16px; }
-  .input-card { padding: 20px 18px; }
-  textarea { height: 130px; }
-  .drop-zone { min-height: 150px; }
-  .primary-btn { height: 56px; }
+  /* single column inputs — each card is one full screen */
+  .input-grid { grid-template-columns: 1fr; gap: 0; }
+  .input-card {
+    padding: 32px 22px;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
+  .input-card:first-child { border-top: none; }
+  textarea { height: 160px; flex: none; }
+  .drop-zone { min-height: 180px; flex: none; }
+  .primary-btn { height: 58px; margin-top: auto; }
+  .textarea-box { flex: none; }
 
   /* results single column on phone */
   .results-grid { grid-template-columns: 1fr; }
