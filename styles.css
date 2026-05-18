@@ -693,8 +693,13 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   }
   .privacy-card { max-width: 100%; width: 100%; }
 
-  .top-actions { display: none; }
+  .theme-btn { display: none; }
   .topbar { padding-bottom: 12px; }
+  .learn-btn {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 15px;
+  }
   .brand-shield { width: 36px; height: 36px; font-size: 16px; border-radius: 9px; }
   .brand > span { font-size: 17px; }
 
