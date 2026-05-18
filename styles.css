@@ -699,15 +699,12 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   .app { padding: 10px 12px 36px; }
   .main-frame { border-radius: var(--r-lg); }
 
-  /* hero fills the screen on phone — one card at a time */
+  /* hero stacks vertically on phone */
   .hero {
     flex-direction: column;
     align-items: flex-start;
-    padding: 36px 22px 32px;
-    gap: 20px;
-    min-height: 100svh;
-    min-height: 100vh; /* fallback */
-    justify-content: center;
+    padding: 28px 22px 24px;
+    gap: 16px;
   }
   .privacy-card { max-width: 100%; width: 100%; }
 
