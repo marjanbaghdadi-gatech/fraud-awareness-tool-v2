@@ -87,6 +87,19 @@ body {
   font-family: 'Lora', serif;
   font-size: 22px; font-weight: 600;
   color: var(--navy); letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.brand {
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.top-actions {
+  flex-shrink: 0;
 }
 
 .top-actions { display: flex; align-items: center; gap: 14px; }
@@ -667,6 +680,8 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 
   .brand > span { font-size: 18px; }
   .brand-shield { width: 40px; height: 40px; font-size: 18px; }
+  .theme-btn { display: none; }
+  .learn-btn { height: 40px; padding: 0 18px; font-size: 15px; }
 }
 
 /* ── PHONE (≤ 640px) ────────────────────────────────── */
@@ -696,12 +711,14 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
   .theme-btn { display: none; }
   .topbar { padding-bottom: 12px; }
   .learn-btn {
-    height: 40px;
-    padding: 0 16px;
-    font-size: 15px;
+    height: 38px;
+    padding: 0 14px;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
-  .brand-shield { width: 36px; height: 36px; font-size: 16px; border-radius: 9px; }
-  .brand > span { font-size: 17px; }
+  .brand-shield { width: 34px; height: 34px; font-size: 15px; border-radius: 8px; }
+  .brand > span { font-size: 15px; }
 
   .content-area { padding: 22px 16px 32px; }
 
