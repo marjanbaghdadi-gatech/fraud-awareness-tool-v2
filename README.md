@@ -8,7 +8,7 @@ Developed by the [Center for Advanced Communications Policy (CACP)](https://cacp
 
 ## 🔗 Live Tool
 
-👉 **[https://marjanbaghdadi-gatech.github.io/fraud-awareness-tool-v2](https://marjanbaghdadi-gatech.github.io/fraud-awareness-assistant)**
+👉 **[https://marjanbaghdadi-gatech.github.io/fraud-awareness-assistant](https://marjanbaghdadi-gatech.github.io/fraud-awareness-assistant)**
 
 ---
 
