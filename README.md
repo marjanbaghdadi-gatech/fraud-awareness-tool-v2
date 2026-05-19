@@ -40,7 +40,7 @@ This tool is part of a research project investigating how AI-powered fraud detec
 
 **If you are a researcher or study participant, please complete our feedback survey after using the tool:**
 
-👉 **[Take the Feedback Survey](https://gatech.co1.qualtrics.com/jfe/form/SV_5d5TMD7vuG60mBE)**
+👉 **[Take the Feedback Survey](https://gatech.co1.qualtrics.com/jfe/form/SV_1YRlFkYcZXiWoS2)**
 
 ---
 
