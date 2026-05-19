@@ -123,8 +123,8 @@ fraud-awareness-tool-v2/
 This is a static front-end — no build step required.
 
 ```bash
-git clone https://github.com/marjanbaghdadi-gatech/fraud-awareness-tool-v2
-cd fraud-awareness-tool-v2
+git clone https://github.com/marjanbaghdadi-gatech/fraud-awareness-assistant
+cd fraud-awareness-assistant
 ```
 
 Then open `index.html` in your browser. The tool connects to a hosted n8n backend at runtime — no local backend setup is needed.
