@@ -42,31 +42,68 @@
     }
     .updated-badge span { color: #7ee8c8; }
 
-    /* ── FILTERS ────────────────────────────────────── */
+    /* ── TOOLBAR (matches Fraud Witness) ───────────────── */
+    .filters-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(13,13,13,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 0;
+      margin: 0 -52px;
+      padding-left: 52px;
+      padding-right: 52px;
+    }
+    .filters-toolbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 32px;
+      gap: 6px;
     }
     .filter-btn {
-      height: 42px;
-      padding: 0 20px;
-      border: 2px solid var(--border);
-      border-radius: 999px;
-      background: white;
-      color: var(--body-text);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.52);
+      padding: 5px 14px;
+      border-radius: 100px;
       font-family: 'Source Sans 3', sans-serif;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
+      white-space: nowrap;
     }
-    .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
-    .filter-btn.active {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: white;
+    .filter-btn:hover { border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.85); }
+    .filter-btn.active { background: #1a6b5a; border-color: #1a6b5a; color: #fff; }
+    .sort-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .sort-group label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sort-group select {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.55);
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
     }
 
     /* ── SCAM CARDS ─────────────────────────────────── */
@@ -256,17 +293,29 @@
         <p>Real scam examples collected from trusted sources like the FTC, AARP, and BBB — written in plain language so you know what to watch for.</p>
       </div>
 
-      <!-- FILTERS -->
-      <div class="filters" id="filters">
-        <button class="filter-btn active" data-category="all">All scams</button>
-        <button class="filter-btn" data-category="phone_scam">📞 Phone</button>
-        <button class="filter-btn" data-category="text_scam">💬 Text</button>
-        <button class="filter-btn" data-category="email_scam">📧 Email</button>
-        <button class="filter-btn" data-category="social_media">📱 Social media</button>
-        <button class="filter-btn" data-category="romance_scam">💔 Romance</button>
-        <button class="filter-btn" data-category="government_impersonation">🏛 Government</button>
-        <button class="filter-btn" data-category="tech_support">💻 Tech support</button>
-        <button class="filter-btn" data-category="grandparent_scam">👵 Grandparent</button>
+      <!-- TOOLBAR -->
+      <div class="filters-toolbar">
+        <div class="filters-toolbar-inner">
+          <div class="filters" id="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="phone_scam">📞 Phone</button>
+            <button class="filter-btn" data-category="text_scam">💬 Text</button>
+            <button class="filter-btn" data-category="email_scam">📧 Email</button>
+            <button class="filter-btn" data-category="social_media">📱 Social media</button>
+            <button class="filter-btn" data-category="romance_scam">💔 Romance</button>
+            <button class="filter-btn" data-category="government_impersonation">🏛 Government</button>
+            <button class="filter-btn" data-category="tech_support">💻 Tech support</button>
+            <button class="filter-btn" data-category="grandparent_scam">👵 Grandparent</button>
+          </div>
+          <div class="sort-group">
+            <label for="sort-scams">Sort</label>
+            <select id="sort-scams">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="category">By category</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <!-- SCAMS GRID -->
@@ -333,11 +382,23 @@
     }
 
     // ── Render scam cards ─────────────────────────────
+    // ── Sort ──────────────────────────────────────────
+    const sortSelect = document.getElementById("sort-scams");
+    sortSelect.addEventListener("change", renderScams);
+
+    function getSortedScams(scams) {
+      const val = sortSelect.value;
+      const copy = [...scams];
+      if (val === "oldest") return copy.sort((a,b) => new Date(a.date_reported||0) - new Date(b.date_reported||0));
+      if (val === "category") return copy.sort((a,b) => (a.category||"").localeCompare(b.category||""));
+      return copy.sort((a,b) => new Date(b.date_reported||0) - new Date(a.date_reported||0)); // newest
+    }
+
     function renderScams() {
       const grid = document.getElementById("scamsGrid");
-      const filtered = activeCategory === "all"
+      const filtered = getSortedScams(activeCategory === "all"
         ? allScams
-        : allScams.filter(s => s.category === activeCategory);
+        : allScams.filter(s => s.category === activeCategory));
 
       if (filtered.length === 0) {
         grid.innerHTML = `<div class="empty-state"><p>No scams found in this category yet.</p></div>`;

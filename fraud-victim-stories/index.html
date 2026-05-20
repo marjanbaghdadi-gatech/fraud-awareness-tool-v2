@@ -4,40 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fraud Witness — Real Stories, Real Victims</title>
+  <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+<div class="app">
 
-  <header class="site-header">
-    <!-- TOPBAR -->
-    <div class="fw-topbar">
-      <div class="fw-brand">
-        <div class="fw-brand-shield">✓</div>
-        <span class="fw-brand-name">Fraud Awareness Assistant</span>
-      </div>
-      <nav class="fw-nav">
-        <a href="../index.html" class="fw-nav-btn">← Check a message</a>
-        <a href="../scams.html" class="fw-nav-btn">Latest Trends</a>
-      </nav>
+  <!-- TOPBAR (outside main-frame, matching other pages) -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-shield">✓</div>
+      <span>Fraud Awareness Assistant</span>
     </div>
-    <!-- HERO -->
-    <div class="fw-hero">
-      <div class="fw-hero-inner">
-        <h1 class="fw-title">Fraud Witness</h1>
-        <p class="fw-tagline">Real accounts. Real losses. Documented so others can recognise the patterns.</p>
-        <div class="fw-stats" id="header-stats">
-          <span class="fw-stat"><span class="fw-stat-num" id="stat-total">—</span> stories</span>
-          <span class="fw-stat-divider"></span>
-          <span class="fw-stat"><span class="fw-stat-num" id="stat-types">—</span> fraud types</span>
-          <span class="fw-stat-divider"></span>
-          <span class="fw-stat">updated <span class="fw-stat-num" id="stat-date">—</span></span>
-        </div>
-      </div>
+    <div class="top-actions">
+      <a href="../index.html" class="learn-btn" style="text-decoration:none;display:flex;align-items:center;">← Check a message</a>
+      <a href="../scams.html" class="learn-btn" style="text-decoration:none;display:flex;align-items:center;">Latest Trends</a>
+      <button class="theme-btn" type="button" aria-label="Toggle theme">☾</button>
     </div>
   </header>
+
+  <main class="main-frame fw-main-frame">
+    <!-- HERO inside main-frame -->
+    <div class="fw-hero">
+      <h1 class="fw-title">Fraud Witness</h1>
+      <p class="fw-tagline">Real accounts. Real losses. Documented so others can recognise the patterns.</p>
+      <div class="fw-stats" id="header-stats">
+        <span class="fw-stat"><span class="fw-stat-num" id="stat-total">—</span> stories</span>
+        <span class="fw-stat-divider"></span>
+        <span class="fw-stat"><span class="fw-stat-num" id="stat-types">—</span> fraud types</span>
+        <span class="fw-stat-divider"></span>
+        <span class="fw-stat">updated <span class="fw-stat-num" id="stat-date">—</span></span>
+      </div>
+    </div>
 
   <div class="toolbar">
     <div class="toolbar-inner">
@@ -78,6 +76,8 @@
     </div>
   </main>
 
+  </main><!-- end main-frame -->
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p>Stories sourced automatically from public platforms. All content links to original sources — nothing is hosted here.</p>
@@ -93,5 +93,6 @@
   </div>
 
   <script src="app.js"></script>
+</div><!-- end app -->
 </body>
 </html>
