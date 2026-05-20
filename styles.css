@@ -133,9 +133,9 @@ body {
 /* ── MAIN FRAME ─────────────────────────────────────── */
 .main-frame {
   background: var(--warm-card);
-  border: 1.5px solid var(--border);
+  /* border: 1.5px solid var(--border); */
   border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
+  /* box-shadow: var(--shadow-lg); */
   overflow: hidden;
   margin-top: 0;
 }
