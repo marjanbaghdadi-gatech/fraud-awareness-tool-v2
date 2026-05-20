@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Witness — Real Stories, Real Victims</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-mark"></span>
+        <h1 class="site-title">Fraud Witness</h1>
+      </div>
+      <p class="site-tagline">Real accounts. Real losses. Documented so others can recognise the patterns.</p>
+      <div class="header-stats" id="header-stats">
+        <span class="stat"><span class="stat-num" id="stat-total">—</span> stories</span>
+        <span class="stat-divider"></span>
+        <span class="stat"><span class="stat-num" id="stat-types">—</span> fraud types</span>
+        <span class="stat-divider"></span>
+        <span class="stat">updated <span class="stat-num" id="stat-date">—</span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="romance_scam">Romance</button>
+        <button class="filter-btn" data-filter="investment_fraud">Investment</button>
+        <button class="filter-btn" data-filter="crypto_scam">Crypto</button>
+        <button class="filter-btn" data-filter="phishing">Phishing</button>
+        <button class="filter-btn" data-filter="tech_support_scam">Tech support</button>
+        <button class="filter-btn" data-filter="government_impersonation">Gov. impersonation</button>
+        <button class="filter-btn" data-filter="identity_theft">Identity theft</button>
+        <button class="filter-btn" data-filter="online_shopping_fraud">Shopping</button>
+        <button class="filter-btn" data-filter="lottery_scam">Lottery</button>
+        <button class="filter-btn" data-filter="other">Other</button>
+      </div>
+      <div class="sort-group">
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="platform">By platform</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="stories-grid" id="stories-grid">
+      <div class="loading-state" id="loading-state">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+      </div>
+    </div>
+    <div class="empty-state hidden" id="empty-state">
+      <p>No stories match this filter yet.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Stories sourced automatically from public platforms. All content links to original sources — nothing is hosted here.</p>
+      <p class="footer-note">If you or someone you know has been a victim of fraud, contact the <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">FTC</a> or <a href="https://www.ic3.gov" target="_blank" rel="noopener">FBI IC3</a>.</p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
