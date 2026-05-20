@@ -97,9 +97,8 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(13,13,13,0.97);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #faf8f5;
+  border-bottom: 1px solid rgba(200,208,220,0.8);
   padding: 10px 0;
 }
 
@@ -119,9 +118,9 @@ a:hover { text-decoration: underline; }
 }
 
 .filter-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: white;
+  border: 1.5px solid #c8d0dc;
+  color: #334466;
   padding: 5px 13px;
   border-radius: 100px;
   font-family: var(--font-body);
@@ -132,13 +131,13 @@ a:hover { text-decoration: underline; }
 }
 
 .filter-btn:hover {
-  border-color: var(--border-md);
-  color: var(--text);
+  border-color: #1a6b5a;
+  color: #1a6b5a;
 }
 
 .filter-btn.active {
-  background: #1a6b5a;
-  border-color: #1a6b5a;
+  background: #0b1f3a;
+  border-color: #0b1f3a;
   color: #fff;
 }
 
@@ -151,17 +150,17 @@ a:hover { text-decoration: underline; }
 
 .sort-group label {
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: #556070;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .sort-group select {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: white;
+  border: 1.5px solid #c8d0dc;
+  color: #334466;
   padding: 5px 10px;
-  border-radius: var(--radius);
+  border-radius: 7px;
   font-family: var(--font-body);
   font-size: 0.82rem;
   cursor: pointer;
@@ -169,7 +168,7 @@ a:hover { text-decoration: underline; }
 }
 
 .sort-group select:focus {
-  border-color: var(--border-md);
+  border-color: #8fa0b5;
 }
 
 /* ─── Main grid ──────────────────────────────────────────────────── */

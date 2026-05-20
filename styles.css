@@ -67,10 +67,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 14px 0;
-  background: #000;
+  background: var(--warm-bg);
   margin: 0 -28px;
   padding-left: 28px;
   padding-right: 28px;
+  border-bottom: 1.5px solid var(--border);
 }
 
 .brand {
@@ -82,16 +83,16 @@ body {
 .brand-shield {
   width: 40px; height: 40px;
   display: grid; place-items: center;
-  background: rgba(255,255,255,0.12); color: white;
+  background: var(--navy); color: white;
   border-radius: 10px; font-size: 19px; font-weight: 600;
-  border: 1.5px solid rgba(255,255,255,0.20);
+  border: none;
   flex-shrink: 0;
 }
 
 .brand > span {
   font-family: 'Lora', serif;
   font-size: 22px; font-weight: 600;
-  color: #fff; letter-spacing: -0.3px;
+  color: var(--navy); letter-spacing: -0.3px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -111,23 +112,23 @@ body {
 
 .learn-btn {
   height: 40px; padding: 0 20px;
-  border: 1.5px solid rgba(255,255,255,0.25); border-radius: 999px;
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85);
+  border: 1.5px solid var(--border-strong); border-radius: 999px;
+  background: white; color: var(--navy);
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--text-sm); font-weight: 600; cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
   text-decoration: none; display: inline-flex; align-items: center;
 }
-.learn-btn:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.15); }
+.learn-btn:hover { border-color: var(--navy); background: var(--warm-mist); }
 
 .theme-btn {
   width: 38px; height: 38px;
-  border: 1.5px solid rgba(255,255,255,0.20); border-radius: 50%;
-  background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75);
+  border: 1.5px solid var(--border); border-radius: 50%;
+  background: white; color: var(--navy);
   font-size: 17px; cursor: pointer;
   display: grid; place-items: center; transition: background 0.2s;
 }
-.theme-btn:hover { background: rgba(255,255,255,0.14); }
+.theme-btn:hover { background: var(--warm-mist); }
 
 /* ── MAIN FRAME ─────────────────────────────────────── */
 .main-frame {
