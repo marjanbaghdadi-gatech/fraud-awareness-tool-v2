@@ -43,7 +43,7 @@ body {
   line-height: 1.9;
   color: var(--body-text);
   background: var(--warm-bg);
-  background-image: radial-gradient(ellipse 90% 40% at 50% 0%, rgba(26,107,90,0.07) 0%, transparent 55%);
+  /* background-image: radial-gradient(ellipse 90% 40% at 50% 0%, rgba(26,107,90,0.07) 0%, transparent 55%); */
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.012em;
 }
