@@ -67,11 +67,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 14px 0;
-  background: var(--warm-bg);
+  /*background: var(--warm-bg);
   margin: 0 -28px;
   padding-left: 28px;
   padding-right: 28px;
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border);*/
 }
 
 .brand {
