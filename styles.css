@@ -138,7 +138,7 @@ body {
   justify-content: space-between;
   gap: 32px;
   padding: 48px 52px 44px;
-  background: linear-gradient(150deg, var(--navy) 0%, var(--navy2) 50%, var(--navy-soft) 100%);
+  background: linear-gradient(150deg, #000000 0%, var(--navy) 40%, var(--navy2) 70%, var(--navy-soft) 100%);
 }
 
 .hero-copy h1 {
