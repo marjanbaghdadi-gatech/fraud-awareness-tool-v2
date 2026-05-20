@@ -7,27 +7,34 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <header class="site-header">
-    <div class="header-inner">
-      <div class="header-brand">
-        <span class="brand-mark"></span>
-        <h1 class="site-title">Fraud Witness</h1>
+    <!-- TOPBAR -->
+    <div class="fw-topbar">
+      <div class="fw-brand">
+        <div class="fw-brand-shield">✓</div>
+        <span class="fw-brand-name">Fraud Awareness Assistant</span>
       </div>
-      <nav class="stories-nav">
-        <a href="../index.html" class="stories-nav-btn">← Check a message</a>
-        <a href="../scams.html" class="stories-nav-btn">Latest Trends</a>
+      <nav class="fw-nav">
+        <a href="../index.html" class="fw-nav-btn">← Check a message</a>
+        <a href="../scams.html" class="fw-nav-btn">Latest Trends</a>
       </nav>
-      <p class="site-tagline">Real accounts. Real losses. Documented so others can recognise the patterns.</p>
-      <div class="header-stats" id="header-stats">
-        <span class="stat"><span class="stat-num" id="stat-total">—</span> stories</span>
-        <span class="stat-divider"></span>
-        <span class="stat"><span class="stat-num" id="stat-types">—</span> fraud types</span>
-        <span class="stat-divider"></span>
-        <span class="stat">updated <span class="stat-num" id="stat-date">—</span></span>
+    </div>
+    <!-- HERO -->
+    <div class="fw-hero">
+      <div class="fw-hero-inner">
+        <h1 class="fw-title">Fraud Witness</h1>
+        <p class="fw-tagline">Real accounts. Real losses. Documented so others can recognise the patterns.</p>
+        <div class="fw-stats" id="header-stats">
+          <span class="fw-stat"><span class="fw-stat-num" id="stat-total">—</span> stories</span>
+          <span class="fw-stat-divider"></span>
+          <span class="fw-stat"><span class="fw-stat-num" id="stat-types">—</span> fraud types</span>
+          <span class="fw-stat-divider"></span>
+          <span class="fw-stat">updated <span class="fw-stat-num" id="stat-date">—</span></span>
+        </div>
       </div>
     </div>
   </header>
