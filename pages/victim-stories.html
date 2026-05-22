@@ -173,13 +173,7 @@
 
       <!-- HERO -->
       <div class="page-hero">
-        <div class="page-hero-stats" id="hero-stats">
-          <span class="page-hero-stat"><span class="page-hero-stat-num" id="stat-total">—</span> stories</span>
-          <span class="page-hero-divider"></span>
-          <span class="page-hero-stat"><span class="page-hero-stat-num" id="stat-types">—</span> fraud types</span>
-          <span class="page-hero-divider"></span>
-          <span class="page-hero-stat">updated <span class="page-hero-stat-num" id="stat-date">—</span></span>
-        </div>
+        <div class="updated-badge">🔄 Updated weekly · <span id="lastUpdated">Loading…</span></div>
         <h1>Fraud Witness</h1>
         <p>Real accounts. Real losses. Documented so others can recognise the patterns.</p>
       </div>
@@ -289,12 +283,10 @@
 
     // ── Stats ─────────────────────────────────────────
     function renderStats() {
-      document.getElementById("stat-total").textContent = allStories.length.toLocaleString();
-      document.getElementById("stat-types").textContent = new Set(allStories.map(s => s.fraud_category)).size;
       const latest = allStories.map(s => s.date_found).sort().reverse()[0];
-      document.getElementById("stat-date").textContent = latest
-        ? new Date(latest).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-        : "—";
+      document.getElementById("lastUpdated").textContent = latest
+        ? new Date(latest).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+        : "recently";
     }
 
     // ── Sort / Filter ─────────────────────────────────

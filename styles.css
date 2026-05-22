@@ -140,14 +140,30 @@ body {
   margin-top: 0;
 }
 
+/* ── UPDATED BADGE (shared with page.css) ───────────── */
+.updated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.80);
+  margin-bottom: 18px;
+}
+.updated-badge span { color: #7ee8c8; font-weight: 600; }
+
 /* ── HERO ───────────────────────────────────────────── */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  padding: 48px 52px 44px;
+  padding: 48px 52px;
   background: linear-gradient(150deg, #000000 0%, var(--navy) 40%, var(--navy2) 70%, var(--navy-soft) 100%);
+  min-height: 220px;
 }
 
 .hero-copy h1 {
@@ -653,7 +669,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 
   .app { padding: 14px 20px 44px; }
 
-  .hero { padding: 36px 32px 32px; gap: 20px; }
+  .hero { padding: 36px 32px; gap: 20px; min-height: 200px; }
   .hero-copy p { max-width: 100%; font-size: 22px; }
   .privacy-card { max-width: 260px; padding: 18px 20px; }
 
@@ -770,7 +786,7 @@ textarea::placeholder { color: #8a9db5; font-size: var(--text-base); }
 /* ── WIDE SCREENS (> 1200px) ────────────────────────── */
 @media (min-width: 1200px) {
   .app { max-width: 1160px; padding: 24px 40px 72px; }
-  .hero { padding: 56px 60px 52px; }
+  .hero { padding: 56px 60px; min-height: 240px; }
   .content-area { padding: 48px 60px 64px; }
   .input-grid { gap: 32px; }
   .results-title { padding: 28px 36px; }

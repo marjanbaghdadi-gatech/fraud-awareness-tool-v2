@@ -8,18 +8,22 @@
 
 /* ── PAGE HERO ──────────────────────────────────────────────────── */
 .page-hero {
-  background: linear-gradient(135deg, #000000 0%, #0b1f3a 45%, #163358 100%);
+  background: linear-gradient(150deg, #000000 0%, #0b1f3a 40%, #163358 70%, #1e4a7a 100%);
   border-radius: var(--r-xl);
   padding: 48px 52px;
   margin-bottom: 0;
   color: white;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .page-hero h1 {
   font-family: 'Lora', serif;
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin: 0 0 12px;
+  font-size: var(--text-hero);
+  font-weight: 400;
+  margin: 0 0 14px;
   color: white;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -339,12 +343,12 @@
 
 /* ── RESPONSIVE ─────────────────────────────────────────────────── */
 @media (max-width: 960px) {
-  .page-hero { padding: 36px 32px; border-radius: var(--r-lg); }
+  .page-hero { padding: 36px 32px; border-radius: var(--r-lg); min-height: 200px; }
   .toolbar-inner { padding: 0; }
 }
 
 @media (max-width: 640px) {
-  .page-hero { padding: 28px 20px; border-radius: var(--r-md); }
+  .page-hero { padding: 28px 20px; border-radius: var(--r-md); min-height: 180px; }
   .page-hero h1 { font-size: var(--text-lg); }
   .page-card { padding: 22px 18px; }
   .page-card-header { flex-direction: column; }
