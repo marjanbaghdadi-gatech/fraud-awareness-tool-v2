@@ -33,6 +33,7 @@ const disclaimerText      = document.getElementById("disclaimerText");
  
 let selectedImageFile = null;
 let stepTimer = null;
+<<<<<<< HEAD
 
 // ── Theme toggle ──────────────────────────────────────
 const themeBtn = document.querySelector(".theme-btn");
@@ -47,6 +48,9 @@ themeBtn.addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
+=======
+ 
+>>>>>>> cf949338764075e0aba7cf037bdb8dbcb8efef64
 // ── Char counter ─────────────────────────────────────
 textInput.addEventListener("input", () => {
   charCount.textContent = `${textInput.value.length} / 3000`;
